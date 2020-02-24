@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe测试</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../js/lpyUtil.js"></script>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+    body{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+    }
+    .main{
+        background: #67acf3;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    iframe{
+        border: none;
+        padding: 0px;
+        margin: 0px;
+        height: 300px;
+    }
+    .main-button{
+        width: 100px;
+        height: 30px;
+        padding: 2px 5px;
+    }
+</style>
+<body>
+<div class="main">
+    我是第二个子页面的子页面
+    <div><span>调用爷爷的方法:</span><button id="button1"  class="main-button">点击1</button></div>
+
+    <div id="userName">李大哥</div>
+</div>
+
+</body>
+<script>
+function sayWhy(str){
+    alert(str+'调用了我');
+}
+$("#button1").click(()=>{
+    parent.parent.sayHello();
+})
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe测试</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../js/lpyUtil.js"></script>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+    body{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+    }
+    .main{
+        background: #67acf3;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    iframe{
+        border: none;
+        padding: 0px;
+        margin: 0px;
+        height: 300px;
+    }
+</style>
+<body>
+<div class="main">
+    我是第二个子页面
+    <div class="brother">兄弟页面也可以控制我</div>
+    <iframe id="test3" src="iframeTest_3.html" class="content"></iframe>
+</div>
+
+</body>
+<script>
+function sayHI(str){
+    alert(str+'调用了我');
+}
+</script>
+</html>

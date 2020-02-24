@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模版页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/lpyUtil.js?3"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script>
+        $.loadJsCss(['../js/weui.min.js','../css/weui.css','../css/demo.css','../js/jquery.form.min.js'],'1.0.1');
+    </script>
+</head>
+<body>
+<div>
+    <div id="toast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+            <p class="weui-toast__content">已完成</p>
+        </div>
+    </div>
+   <!-- <div id="toast-tip" style="display: none;">
+        <div class="weui-toast-tip">
+            <p class="weui-toast__content">请填写手机号</p>
+        </div>
+    </div>-->
+    <form class="cmxform" id="signupForm" method="get" action="">
+        <div class="weui-form__control-area">
+            <div class="weui-cells__group weui-cells__group_form">
+                <div class="weui-cells__title">表单组标题</div>
+                <div class="weui-cells weui-cells_form">
+                    <div class="weui-cell weui-cell_active">
+                        <div class="weui-cell__hd"><label class="weui-label">微信号</label></div>
+                        <div class="weui-cell__bd">
+                            <input id="weChat" name="weChat"class="weui-input" placeholder="填写本人微信号">
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_active">
+                        <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+                        <div class="weui-cell__bd">
+                            <input id="userName" name="userName" class="weui-input" placeholder="填写本人微信号的昵称">
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_active">
+                        <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
+                        <div class="weui-cell__bd">
+                            <input id="phone" name="phone" class="weui-input" placeholder="填写绑定的电话号码" type="number" pattern="[0-9]*">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <a href="javascript:;" class="weui-btn weui-btn_primary weui-btn_loading" id="showToast"><i class="weui-loading" style="display: none"></i>提交</a>
+</div>
+</body>
+<script>
+    $(document).ready(function(){
+        const a = '  123 123 sd sdf d gg g';
+        let b = $.trim(a);
+        console.log(b);
+        console.log($.trimAll(a));
+        console.log($.getNowFormatDate('-'));
+        console.log($.getNowWeekDay());
+        let arr=['1','v','4'];
+        console.log(Array.isArray(arr));
+        console.log($.getRootPath_web());
+        let value=(function(){
+            console.log("aaaaaaaa");
+            throw new error('cuowule');
+        }())
+        function getConfig(){
+            return new Promise((resolve, reject)=>{
+                $.ajaxProcess({
+                    url:'../tsconfig.json',
+                    type:'GET',
+                    data: {},
+                    success: function (suc, data) {
+                        if (suc) {
+                            resolve(data);
+                        } else {
+                            reject(data);
+                        }
+                    }
+                });
+            }).then((res)=>{
+                return getMsg(res);
+            },(error)=>{
+                console.log(error);
+            }).then((ress)=>{
+                console.log(ress);
+            },(errorr)=>{
+                console.log(errorr);
+            })
+        }
+        function getMsg(res) {
+            console.log(res);
+            console.log('我继续执行');
+            return new Promise((resolve, reject)=>{
+                $.ajaxProcess({
+                    url:'../mgconfig.json',
+                    type:'GET',
+                    data: {},
+                    success: function (suc, data) {
+                        if (suc) {
+                            resolve(data);
+                        } else {
+                            reject(data);
+                        }
+                    }
+                });
+            })
+        }
+        getConfig();
+
+        $(function(){
+            const $toast = $('#toast-tip');
+            $('#showToast').on('click', function(){
+                $("#signupForm").submit();
+                //$.showTip('请输入正确的手机号');
+            });
+        });
+        /**添加一个新的验证方法.*/
+        $.validator.addMethod("phone", function(value) {
+            return /^1[3456789]\d{9}$/.test(value);
+        }, "请输入正确的手机号");
+        let options={
+            success(responseText,statusText){
+                //console.log(responseText,statusText);
+                //$("#signupForm").clearForm();
+                alert("崇高");
+            },
+            resetForm:true,
+            beforeSubmit(formData, jqForm, options){
+                // formData: 数组对象，提交表单时，form插件会以ajax方式自动提交这些数据，格式如[{name:user,value:val},{name:pwd,value:pwd}]
+                // jqForm: jQuery对象，封装了表单的元素
+                // options: options对象
+                const queryString=$.param(formData); // name=1&address=2
+                const formElement=jqForm[0]; // 将jqForm转换为DOM对象
+                console.log("queryString",queryString);
+                console.log("formElement",formElement);
+                let phone= formElement.phone.value.substring(0,8)+'****';
+
+                $("#phone").val(phone);
+                return true; // 只要不返回false，表单都会提交，在这里可以对表单元素进行验证
+
+            }
+        }
+        $("#signupForm").validate({
+            onsubmit:true,//是否提交时验证
+            onfocusout:false,//是否在获取焦点时验证
+            onkeyup:false,//是否在敲击键盘时验证
+            submitHandler(form){
+                $(form).ajaxSubmit(options);
+                return false; //阻止表单默认提交
+            },
+            rules: {
+                weChat:{
+                    required: true,
+                    maxlength:20
+                },
+                userName: {
+                    required: true
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#password"
+                },
+                phone: {
+                    required: true,
+                    phone:true
+                }
+            },
+            messages: {
+                weChat: {
+                    required: "请输入微信账号",
+                    maxlength: "微信最大长度为20位"
+                },
+                userName: {
+                    required: "请输入微信号的昵称",
+                    minlength: "用户名必需由两个字母组成"
+                },
+                password: {
+                    required: "请输入密码",
+                    minlength: "密码长度不能小于 5 个字母"
+                },
+                confirm_password: {
+                    required: "请输入密码",
+                    minlength: "密码长度不能小于 5 个字母",
+                    equalTo: "两次密码输入不一致"
+                },
+                phone: {
+                    required: "请输入电话"
+                }
+            },
+            valid: function () {
+                console.log('qqqqq');
+            },
+            showErrors:function(errorMap,errorList){
+                console.log("errorMap",errorMap);
+                console.log("errorList",errorList);
+                if(errorList.length>0)
+                    $.showTip(errorList[0].message);
+            }
+        })
+    })
+
+</script>
+</html>

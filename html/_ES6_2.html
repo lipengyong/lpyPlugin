@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+
+</body>
+<script>
+    //箭头函数的特点
+    //1。简洁
+    //2。箭头函数没有自己的this，指向在定义的时候处在的函数对象this
+    let fun=()=>console.log("我是一个箭头函数");
+    fun();
+    //一个形参可以省略括号
+    let fun2=username=>{
+        console.log("传入de值为",username);
+    }
+    fun2("deken");
+    let fun3=(username,age)=>{
+        console.log("传入de值为",username,age);
+    }
+    fun3("james",34);
+</script>
+</html>

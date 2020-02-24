@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use strict';
+    // 严格模式
+    //‘use strict’;
+    //*必须使用var声明变量
+    //*禁止自定义函数的this指向windows
+    //*eval函数 创建自己的作用域
+    //*创建严格模式
+    let username='kobe';
+    console.log(username);
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    new Person("kobe","by");
+    eval('let username="dekun";console.log(username)');//eval函数 创建自己的作用域
+    let json={username:'wade'}
+    let stringJson=JSON.stringify(json);
+    console.log(stringJson);
+    stringJson=JSON.parse(stringJson);
+    console.log(stringJson);
+
+    //数组的扩展信息
+    let array=[1,2,3,6,4,3,4,1];
+    console.log(array.indexOf(1));
+    console.log(array.lastIndexOf(3))
+    array.forEach(function (item,index) {
+        console.log(item,index);
+    })
+    let array1=array.map(function(item,index){
+        return item+10;
+    })
+    console.log(array1);
+
+    let array2=array.filter(function(item){
+        return item>2;
+    });
+    console.log(array2);
+
+    function foo(data) {
+        console.log(this,data)
+    }
+    //call和apple的入参不一样，调用函数
+    foo.call(json,'22');
+    foo.apply(json,[33]);
+
+    let bar=foo.bind(json,'44');//bind特点，绑定完后不会立即执行，而是返回一个函数
+    bar();
+    //bind用法eg
+    setTimeout(function(){
+        console.log("setTimeout"+this);
+    },1000)
+    setTimeout(function(){
+        console.log("setTimeout"+this);
+    }.bind(json),1000)
+</script>
+</html>

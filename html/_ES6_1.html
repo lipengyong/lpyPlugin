@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //let
+    //特点，在块级作用域内有效
+    //无法重复定义
+    //不会预处理，不会提升
+    //应用，循环遍历监听
+    let c;
+    //结构赋值
+    let obj={username:'kobe',age:34};
+    let{username,age}=obj;
+    console.log(username,age);
+    let arr=[1,34,'23','boo',{username: 'duken'}];
+    let [,,a,d]=arr;
+    console.log(a,d);
+
+    //模板字符串
+    let obj2={username:'wade',age:56};
+    let str=`我的名字叫${obj2.username},年纪${obj2.age}`;
+    console.log(str);
+    //简化对象写法
+    //省略同名属性
+    //可以省略函数的function
+    let obj3={
+        username,
+        age,
+        getName(){
+            console.log(this.username);
+        }
+    }
+    console.log("简化对象写法",obj3);
+    obj3.getName();
+</script>
+</html>

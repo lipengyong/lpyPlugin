@@ -1,0 +1,16 @@
+{
+  "result": [
+    {
+      "dictCode": "P_REPAIR_INFO",
+      "dictId'": "93294b15-3e78-4b2a-99f8-2df90fa1a15a",
+      "dictName": "后勤维修",
+      "dictNote": "",
+      "dictValue": "5",
+      "pDictId": "f9674c68-908c-44db-aa04-02555ebdc532",
+      "param1": "",
+      "type": "1"
+    }
+  ],
+  "ret": 0,
+  "msg": ""
+}

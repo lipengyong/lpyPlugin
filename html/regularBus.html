@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--公交车列表demo-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>班车时刻表</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background: #efefef;
+        color: #787878;
+    }
+    .wd-model-list {
+        margin-bottom: 65px;
+    }
+    .wd-model-header {
+        height: 62px;
+        padding: 10px 2%;
+        border-bottom: 1px solid #d7dfe4;
+    }
+    .wd-model-title-desc span {
+        margin-right: 10px;
+    }
+    .wd-model-content {
+        width: 96%;
+        background: #fff;
+        padding: 10px 2%;
+        color: #757575;
+        position: relative;
+    }
+    .wd-model-content-title {
+        margin-bottom: 6px;
+        margin-left: 10px;
+    }
+    .wd-model-list {
+        background: #fff;
+        margin: 10px;
+    }
+    .wd-model-left, .wd-model-middle, .wd-model-right {
+        width: calc(33.333% - 5px);
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+    }
+    .wd-model-left, .wd-model-right {
+        font-weight: bold;
+        font-size: 13px;
+        color: #787878;
+        margin-top: 5px;
+        line-height: 25px;
+    }
+    .wd-model-title {
+        margin-top: 4px;
+    }
+    .wd-model-item {
+        border-bottom: 1px solid #f6f6f7;
+        padding: 0 20px;
+    }
+    .wd-model-item span {
+        display: inline-block;
+    }
+    .bus-time {
+        font-size: 12px;
+        font-weight: normal;
+    }
+    .bus-no, .bus-time {
+        font-size: 12px;
+    }
+    .bus-no {
+        font-weight: 700;
+    }
+    .wd-model-item-time {
+        width: 60px;
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        vertical-align: middle;
+    }
+    .xc-detail {
+        font-size: 13px;
+        font-weight: bold;
+        color: #259fde;
+        margin-left: 15px;
+        line-height: 20px;
+        display: inline-block;
+        width: calc(100% - 100px);
+        vertical-align: middle;
+    }
+</style>
+
+<body>
+<div id="busList">
+   <!-- <div class="wd-model-list">
+        <div class="wd-model-header">
+            <div class="wd-model-title">
+                <div class="wd-model-left">
+                    <div>广贤路</div>
+                    <div class="bus-time">发车 7:07</div>
+                </div>
+                <div class="wd-model-middle">
+                    <div class="bus-no">一号线</div>
+                    <div class=""><img src="../images/bus.png"></div>
+                    <div class="bus-time">约33分钟</div>
+                </div>
+                <div class="wd-model-right">
+                    <div>万达广场</div>
+                    <div class="bus-time">到站 7:40</div>
+                </div>
+            </div>
+        </div>
+        <div class="wd-model-content">
+            <div>
+                <div class="wd-model-content-title">时刻表</div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:07</span>
+                    <span class="xc-detail">
+						广贤路
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:19</span>
+                    <span class="xc-detail">
+						通途路与桑田路交叉口
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:26</span>
+                    <span class="xc-detail">
+						湖西路公交站
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:33</span>
+                    <span class="xc-detail">
+						宁波教育学院公交站
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:37</span>
+                    <span class="xc-detail">
+						天成家园
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:40</span>
+                    <span class="xc-detail">
+						万达广场
+					</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wd-model-list">
+        <div class="wd-model-header">
+            <div class="wd-model-title">
+                <div class="wd-model-left">
+                    <div>浅水湾城市花园</div>
+                    <div class="bus-time">发车 7:00</div>
+                </div>
+                <div class="wd-model-middle">
+                    <div class="bus-no">二号线</div>
+                    <div class=""><img src="../images/bus.png"></div>
+                    <div class="bus-time">约40分钟</div>
+                </div>
+                <div class="wd-model-right">
+                    <div>万达广场</div>
+                    <div class="bus-time">到站 7:40</div>
+                </div>
+            </div>
+        </div>
+        <div class="wd-model-content">
+            <div>
+                <div class="wd-model-content-title">时刻表</div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:07</span>
+                    <span class="xc-detail">
+						广贤路
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:19</span>
+                    <span class="xc-detail">
+						通途路与桑田路交叉口
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:26</span>
+                    <span class="xc-detail">
+						湖西路公交站
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:33</span>
+                    <span class="xc-detail">
+						宁波教育学院公交站
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:37</span>
+                    <span class="xc-detail">
+						天成家园
+					</span>
+                </div>
+                <div class="wd-model-item">
+                    <span class="wd-model-item-time">7:40</span>
+                    <span class="xc-detail">
+						万达广场
+					</span>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/lpyUtil.js" ></script>
+<script>
+    (function () {
+        $.loadJsCss(['../js/weui.min.js','../css/weui.css'],'1.0.1');
+        $(document).ready(function () {
+            init();//初始化参数
+            addListener();
+        });
+
+        /**
+         * 初始化参数
+         */
+        function init() {
+            schoolBusUtil.getSchoolBusList();
+        };
+
+        /**
+         * 添加监听事件
+         */
+        function addListener() {
+
+        };
+
+        let schoolBusUtil = {
+            //获取班车信息
+            getSchoolBusList() {
+                return new Promise((resolve, reject)=>{
+                    $.ajaxProcess({
+                        url:'../busList.json',
+                        type:'GET',
+                        data: {},
+                        success: function (suc, data) {
+                            if (suc) {
+                                resolve(data);
+                            } else {
+                                reject(data);
+                            }
+                        }
+                    });
+                }).then((_data)=>{
+                    schoolBusUtil.setSchoolBusHtml(_data);
+                },(error)=>{
+                    $.showTip(error);
+                })
+            },
+            //设置html
+            setSchoolBusHtml (_data) {
+                let [$busList,_html]=[$("#busList"),new Array()];
+                for(let cxData of _data){
+                    _html.push(`<div class="wd-model-list"><div class="wd-model-header"><div class="wd-model-title"><div class="wd-model-left"><div>${cxData.xcStart}</div><div class="bus-time">发车 ${cxData.xcTime}</div></div><div class="wd-model-middle"><div class="bus-no">${cxData.xcName}</div><div class=""><img src="../images/bus.png"></div><div class="bus-time">${cxData.xcUseTime}</div></div><div class="wd-model-right"><div>${cxData.xcEnd}</div><div class="bus-time">到站 ${cxData.xcEndTime}</div></div></div></div>`);
+                    _html.push(schoolBusUtil.getDataHtml(cxData.xcDetail));
+                }
+                $busList.html(_html.join(''));
+            },
+            getDataHtml:function (busdata) {
+                let _html=['<div class="wd-model-content"><div><div class="wd-model-content-title">时刻表</div>'];
+                for(let cxData of busdata){
+                    _html.push(`<div class="wd-model-item"><span class="wd-model-item-time">${cxData.time}</span><span class="xc-detail">${cxData.place}</span></div>`)
+                }
+                _html.push('</div></div>');
+                return _html.join('');
+
+            }
+        }
+
+
+    })();
+</script>
+</body>
+
+</html>

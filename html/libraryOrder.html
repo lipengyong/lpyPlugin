@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>tabs例子</title>
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../js/lpyUtil.js"></script>
+    <script type="text/javascript" src="../js/weui.min.js"></script>
+    <script type="text/javascript" src="../js/cbpFWTabs.js"></script>
+    <script>
+        $.loadJsCss(['../css/tabs.css', '../css/libraryOrder.css'], '1.0.1');
+    </script>
+</head>
+<body>
+<div class="swiper-slide">
+    <div class="tabstitle tabstitle-style-linemove">
+        <nav>
+            <ul>
+                <li class="">
+                    <a href="#"><span>小程序</span></a>
+                </li>
+                <li class="">
+                    <a href="#"><span>沙发法撒旦</span></a>
+                </li>
+                <li class="">
+                    <a href="#"><span>手动阀</span></a>
+                </li>
+                <li class="">
+                    <a href="#"><span>双方的</span></a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="content-slide">
+        <div class="supermarket-list order-list">
+            <ul>
+                <!--<li>
+                    <div class="ware">
+                        <div class="ware-img" >
+                            <img src="../../resource/images/guanlanshop.jpg" />
+                        </div>
+                        <div class="ware-name">
+                            <div class="ware-title">
+                                图书馆1楼预览室
+                                &lt;!&ndash;<span class="distance">2.1km</span>&ndash;&gt;
+                            </div>
+                            <div class="ware-address">
+                                <span>预约人数:</span><span>  20</span>
+                            </div>
+                            <div class="ware-address">
+                                <span>容纳人数:</span><span>  50</span>
+                            </div>
+                            <a href="javascript:;" class="weui-btn  handle full" data-status="2">已前往</a>
+                        </div>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    (function () {
+        let actualDay = [];
+        let libarayList = [{"lsh": "1", "name": "图书馆1楼101阅览室", "maxNumber": "50", "img": "img2.jpg"},
+            {"lsh": "2", "name": "图书馆2楼201阅览室", "maxNumber": "50", "img": "img2.jpg"},
+            {"lsh": "3", "name": "图书馆2楼202借阅室", "maxNumber": "100", "img": "img2.jpg"},
+            {"lsh": "4", "name": "图书馆3楼301自习室", "maxNumber": "3", "img": "img2.jpg"},];
+        $(document).ready(function () {
+            init();//初始化参数
+        });
+
+        /**
+         * 初始化参数
+         */
+        function init() {
+            libraryOrderUtil.setOrderDate();
+            libraryOrderUtil.setlibraryList();
+
+        };
+
+        let libraryOrderUtil = {
+            setlibraryList: function () {
+                $(".order-list ul").empty();
+                for (let i in libarayList) {
+                    let libraryDate = libarayList[i];
+                    let _html = '<li id="' + libraryDate.lsh + '"><div class="ware"><div class="ware-img" ><img src="../images/' + libraryDate.img + '" /></div><div class="ware-name"><div class="ware-title">' + libraryDate.name + '</div><div class="ware-address"><span>预约人数:</span><span class="orderNo">  </span></div><div class="ware-address"><span>容纳人数:</span><span>  ' + libraryDate.maxNumber + '</span></div><a href="javascript:;" class="weui-btn  handle" data-status="1"></a></div></div></li>';
+                    $(".order-list ul").append(_html);
+                }
+            },
+            setOrderDate: function () {
+                //初始化选择日期
+                let orderDay = getNowFormatDate();
+                let _html = '';
+                for (let i = 0, max = orderDay.length; i < max; i++) {
+                    _html += '<li class=""><a href="#"><span>' + orderDay[i] + '</span></a> </li>';
+                }
+                $(".tabstitle").find("ul").html(_html);
+                (function () {
+                    [].slice.call(document.querySelectorAll('.tabstitle')).forEach(function (el) {
+                        new CBPFWTabs(el);
+                    });
+                })();
+            }
+        }
+
+        //获取当前时间，格式MM-DD
+        function getNowFormatDate() {
+            const weekday = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+            const title = ["今天", "明天", "后天"];
+            const seperator1 = "-";
+            let orderDay = [];
+            for (let i = 0; i < 4; i++) {
+                let day = new Date();
+                day.setTime(day.getTime() + i * 24 * 60 * 60 * 1000);
+                let strDate = day.getDate();
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                if (i < 3) {
+                    orderDay.push("<p class='wd-header-title'>" + title[i] + "</p><p class='wd-header-day'>" + (day.getMonth() + 1) + "月" + strDate + "日</p>");
+                } else {
+                    orderDay.push("<p class='wd-header-title'>" + weekday[day.getDay()] + "</p><p class='wd-header-day'>" + (day.getMonth() + 1) + "月" + strDate + "日</p>");
+                }
+                actualDay.push(day.getFullYear() + seperator1 + (day.getMonth() + 1) + seperator1 + strDate);
+            }
+            return orderDay;
+        }
+
+    })();
+</script>
+</body>
+
+</html>

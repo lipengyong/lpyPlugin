@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe测试</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../js/lpyUtil.js"></script>
+</head>
+<style>
+    .main{
+        display: flex;
+    }
+    .main .content{
+        flex: 1;
+    }
+    iframe{
+        border: none;
+        padding: 0px;
+        margin: 0px;
+        height: 300px;
+    }
+    .main-button{
+        width: 100px;
+        height: 30px;
+        padding: 2px 5px;
+    }
+</style>
+<body>
+<div class="main-top">
+    <div><span>控制子页面的元素:</span><button id="button1"  class="main-button">点击1</button></div>
+    <div><span>调用子页面的方法:</span><button id="button2"  class="main-button">点击2</button></div>
+    <div><span>设置子页面的元素:</span><button id="button3"  class="main-button">点击3</button></div>
+    <div><span>设置子子页面的元素:</span><button id="button4"  class="main-button">点击4</button></div>
+
+    <div class="parentTitle">子页面的控制</div>
+</div>
+<div class="main">
+    <iframe src="iframeTest_1.html" class="content content-left" id="test1"></iframe>
+    <iframe src="iframeTest_2.html" class="content content-right" id="test2"></iframe>
+</div>
+</body>
+<script>
+    //let childPage=$("#test1").contents().find("p");
+    //console.log($("#test1").contents().find("p").html());
+    (function () {
+       'use strict';
+       let index=1;
+        $('#button1').click(function(){
+            $('#test1').contents().find("p").text(`我控制了子页面de元素${index}`);
+            index++;
+        });
+        $("#button2").click(function(){
+            $("#test1")[0].contentWindow.sayHello('hello world');
+        });
+        $("#button3").click(function(){
+            $("#test1").contents().find("#userName").val('张三');
+        });
+        $("#button4").click(function(){
+            //是否考虑把方法写在子页面，由子页面去调用孙子页面
+            $("#test2").contents().find("#test3").contents().find('#userName').text('张三');
+        });
+    })()
+    function sayHello(){
+        alert("父页面----来自子页面的调用");
+    }
+</script>
+</html>

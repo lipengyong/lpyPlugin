@@ -1,0 +1,58 @@
+{
+  "result": [
+    {
+      "xcStart": "光纤路",
+      "xcTime": "7:00",
+      "xcUseTime": "约33分钟",
+      "xcEnd": "7:40",
+      "xcEndTime": "万达广场",
+      "xcName":"一号线",
+      "xcDetail": [
+        {
+          "time": "7:00",
+          "place": "光纤路"
+        },
+        {
+          "time": "7:07",
+          "place": "通途路"
+        },
+        {
+          "time": "7:20",
+          "place": "联丰路交叉口"
+        },
+        {
+          "time": "7:40",
+          "place": "万达广场"
+        }
+      ]
+    },
+    {
+      "xcStart": "浅水湾花园",
+      "xcTime": "7:00",
+      "xcUseTime": "约33分钟",
+      "xcEnd": "7:40",
+      "xcEndTime": "万达广场",
+      "xcName":"二号线",
+      "xcDetail": [
+        {
+          "time": "7:00",
+          "place": "光纤路"
+        },
+        {
+          "time": "7:07",
+          "place": "通途路"
+        },
+        {
+          "time": "7:20",
+          "place": "联丰路交叉口"
+        },
+        {
+          "time": "7:40",
+          "place": "万达广场"
+        }
+      ]
+    }
+  ],
+  "ret": 0,
+  "msg": ""
+}

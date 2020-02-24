@@ -1,0 +1,42 @@
+{
+  "result": {
+    "repairList": [
+      {
+        "campus": "0",
+        "campusName": "文教路校区",
+        "createTime": "2018-12-25 14:38:25.0",
+        "createUserName": null,
+        "description": "的法国红酒国富黄金干活",
+        "imglist": null,
+        "lsh": "07dee97f-ec5d-4325-a426-f69f224b63ba",
+        "name": null,
+        "place": "萨达刚发过火会更健康",
+        "repairTitle": "各环节各环节",
+        "repairType": "53",
+        "repairTypeName": "",
+        "status": "2",
+        "telephone": "",
+        "userName": null
+      },{
+        "campus": "0",
+        "campusName": "文教路校区",
+        "createTime": "2018-12-25 14:38:25.0",
+        "createUserName": null,
+        "description": "阿斯蒂芬单方事故",
+        "imglist": null,
+        "lsh": "939fd148-9125-4217-8ebe-2d6a7bb32f56",
+        "name": null,
+        "place": "萨达刚发过火会更健康",
+        "repairTitle": "各环节各环节",
+        "repairType": "53",
+        "repairTypeName": "",
+        "status": "2",
+        "telephone": "",
+        "userName": null
+      }
+    ],
+    "total": 10
+  },
+  "ret": 0,
+  "msg": ""
+}

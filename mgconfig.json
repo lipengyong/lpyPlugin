@@ -1,0 +1,9 @@
+{
+  "result": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true
+  },
+  "ret": 1,
+  "msg": "我是mg"
+}

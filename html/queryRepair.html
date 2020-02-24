@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<!--报修列表页面
+     用到功能：
+            1上拉刷新，下拉加载
+            2.搜索
+            3.图片onerror属性-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>我的报修</title>
+    <link rel="stylesheet" href="../css/weui.css"/>
+
+    <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../js/lpyUtil.js"></script>
+    <script type="text/javascript" src="../js/weui.min.js"></script>
+    <script type="text/javascript" src="../js/iscroll.js"></script>
+
+    <script>
+        $.loadJsCss(['../css/queryRepair.css','../js/queryRepair.js'], '1.0.2');
+    </script>
+</head>
+
+<body ontouchstart>
+<div>
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn can-click" id="searchCancel">取消</a>
+    </div>
+    <div class="wx-list" id="wrapper">
+        <ul id="repairList">
+          <!--  <li class="wx-li">
+                <div class="wx-li-logo"><img src="../../resource/images/wuping.png"/></div>
+                <div class="wx-li-content">
+                    <div class="content-left">
+                        <p>十多张课桌椅损坏，部分损坏严重</p>
+                        <div class="content-desc">5张桌角断裂，6张椅子一杯脱落，阿达阿卡三等奖看....</div>
+                        <div class="content-type"><span>类型:</span><span
+                                class="repair-type">桌椅</span><span>时间:</span><span class="repair-time">2018-07-01</span>
+                        </div>
+                    </div>
+                    <div class="content-right">
+                        <div><img src="../../resource/images/place.png"/></div>
+                        <div>西校区</div>
+                    </div>
+                </div>
+            </li>-->
+        </ul>
+    </div>
+    <div id="noResult" class="noResult">
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><img src="../images/zanwu.png"/></div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">暂无内容</h2>
+                <p class="weui-msg__desc"></p>
+            </div>
+        </div>
+    </div>
+    <div class=" page__bd_spacing" id="add-repair">
+        <a href="javascript:;" class="">
+            <i class="icon-add"></i>
+        </a>
+    </div>
+</div>
+
+<script>
+    function imgError (that,str) {
+        $(that).attr('src', str).addClass("logoImg");
+        $(that).attr('onerror',null);//设置错误图片为空为空
+    }
+</script>
+</body>
+
+</html>

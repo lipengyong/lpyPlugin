@@ -1,0 +1,236 @@
+body {
+    font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 13px;
+}
+*{-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;}
+
+
+
+.wx-li div{
+}
+.wx-li-logo{
+    height: 200px;
+    width: 100%;
+    text-align: center;
+}
+.wx-li{
+    width: 100%;
+    height: 280px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 4px #e2dfdf;
+    margin-bottom: 10px;
+    overflow:hidden;
+}
+.wx-li-content{
+    border-top: 1px solid #efefef;
+    font-size: 12px;
+    height: 76px;
+    padding: 7px 0px 5px 0px;
+}
+.wx-li-content p{
+   /*  padding: 5px 0 5px 0; */
+    font-weight: 600;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #333;
+    font-size:14px;
+}
+
+.content-left,.content-right{
+    float: left;
+
+}
+.content-left{
+    width: calc(75% - 25px);
+    margin-left: 15px;
+    padding-right: 10px;
+    padding-top: 3px;
+}
+.content-right{
+    width: 25%;
+    font-size: 12px;
+    color: #bababa;
+    text-align: center;
+}
+.content-desc{
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #bababa;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.content-type{
+    color: #bababa;
+    font-size: 12px;
+}
+.repair-type{
+    width: 75px;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 5px;
+}
+.repair-time{
+    margin-left: 5px;
+    display: inline-block;
+    font-size: 12px;
+}
+.wx-list ul{
+    padding: 0px 8px 0px 8px;
+}
+
+/*scroll*/
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    height: calc(100% - 104px);
+    width: 100%;
+}
+.scroller {
+    position: absolute;
+    z-index: 1;
+    /*	-webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    padding-bottom: 70px;
+}
+.scroller ul {
+    list-style: none;
+    margin: 0;
+    text-align: left;
+}
+.scroller li {
+    min-height:70px;
+    background-color: #fafafa;
+    font-size: 14px;
+}
+.pullDown, .pullUp {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    color: #888;
+    font-family: Arial, Microsoft YaHei;
+} .pullUp{ display:block;}
+.loader {
+    display: inline-block;
+    font-size: 0px;
+    padding: 0px;
+    display: none;
+    margin-top: 10px;
+}
+.loader span {
+    vertical-align: middle;
+    border-radius: 100%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 2px;
+    -webkit-animation: loader 0.8s linear infinite alternate;
+    animation: loader 0.8s linear infinite alternate;
+}
+.loader span:nth-child(1) {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+    background: rgba(245, 103, 115,0.6);
+}
+.loader span:nth-child(2) {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+    background: rgba(245, 103, 115,0.8);
+}
+.loader span:nth-child(3) {
+    -webkit-animation-delay: -0.26666s;
+    animation-delay: -0.26666s;
+    background: rgba(245, 103, 115,1);
+}
+.loader span:nth-child(4) {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+    background: rgba(245, 103, 115,0.8);
+}
+.loader span:nth-child(5) {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+    background: rgba(245, 103, 115,0.4);
+}
+@keyframes loader {
+    from {
+        transform: scale(0, 0);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+@-webkit-keyframes loader {
+    from {
+        -webkit-transform: scale(0, 0);
+    }
+    to {
+        -webkit-transform: scale(1, 1);
+    }
+}
+
+.wx-li-logo img{
+    height: 200px;
+}
+.icon-add{
+    font-size: 25px;
+}
+.icon-address-2{
+    color: #3498db;
+    font-size: 27px;
+}
+.weui-msg {
+    padding-top: 20%;
+}
+.can-click{
+    cursor: pointer;
+}
+.logoImg{
+    width: 100%;
+}
+.page__bd_spacing{
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    background: #2196F3;
+    border-radius: 30px;
+    height: 50px;
+    text-align: center;
+}
+.icon-add {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+    height: 50px;
+    line-height: 50px;
+}
+
+.weui-msg__icon-area {
+    margin-bottom: 16px;
+}
+.weui-msg__title {
+    margin-bottom: 5px;
+    font-weight: 300;
+    font-size: 16px;
+    color: #d6d6d8;
+}
+ .wx-list {
+     padding: 10px 0 10px 0;
+     background: #efefef;
+ }
+
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    height: calc(100%);
+    width: 100%;
+}

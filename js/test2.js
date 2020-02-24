@@ -1,0 +1,1 @@
+console.log("test2成功被导入了");

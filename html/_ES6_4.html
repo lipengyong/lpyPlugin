@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise对象使用</title>
+</head>
+<body>
+  <img width="100px" height="100px" id="testImg" src=""/>
+</body>
+<script>
+   /* let promise = new Promise((resolve, reject) => {
+        console.log("我是promise函数");
+        //setTimeout(resolve,2000,'dadsda');
+        setTimeout(() => {
+            resolve('dsadsa');
+        }, 2000)
+        //reject();//success状态
+    })
+    promise.then((data) => {
+            console.log(data);
+        }
+        , (error) => {
+            console.log(error);
+        });*/
+
+    //异步加载图片
+    function loadImageScync(url) {
+        return new Promise((resolve,reject)=>{
+            let imageDiv=document.getElementById('testImg');
+            imageDiv.onerror=function () {
+                console.log('加载失败了');
+            }
+            imageDiv.onload=function () {
+                //console.log('加载成功了');
+                resolve(url);
+            }
+            imageDiv.src=url;
+        })
+    }
+    loadImageScync('https://himg.bdimg.com/sys/portrait/item/ec1a656e6a6f795f5f79696e0d69').then((url)=>{
+        console.log(`加载成功了${url}`);
+    });
+
+    //两个promise函数
+    const  p1=new Promise(((resolve, reject) => {
+        setTimeout(resolve,3000,'first promise');
+    }))
+    const p2=new Promise((resolve, reject) => {
+        //setTimeout(resolve,1000,p1);
+        setTimeout(resolve,1000,'second promise');
+    })
+    p2.then((result)=>{
+        console.log(result);
+        return p1;
+    }).then((result)=>{
+        console.log(result);
+    })
+</script>
+</html>

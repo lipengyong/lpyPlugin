@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>generator的语法</title>
+</head>
+<body>
+
+</body>
+<script>
+    //可遍历数组 ，arguments，字符串 ，set容器，map容器
+    function* helloGenterator() {
+        console.log("hello");
+        yield 'hello';
+        console.log("world");
+        yield 'world';
+        return ;
+    }
+
+  /*  let a=helloGenterator();
+    a.next();
+    a.next();*/
+    helloGenterator().next();
+</script>
+</html>

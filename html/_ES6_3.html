@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>...运算&&形参默认值</title>
+</head>
+<body>
+
+</body>
+<script>
+    function fun(a,b,...value){
+        console.log(arguments);
+        /*arguments.forEach(function(item,index){
+            console.log(item);
+        })*/
+        value.forEach(function (item,index) {
+            console.log(item);
+        })
+    }
+    fun(1,'234','123','avdf');
+    let arr1=[1,6];
+    let arr2=[2,3,4,5];
+    console.log([1,...arr2,6]);
+    console.log(...arr2);//自动遍历获取到数组内的值
+
+
+    //默认值
+
+    function Point(x=1,y=3){
+        this.x=x;
+        this.y=y;
+    }
+    let point=new Point(1.123,23.333);
+    console.log(point);
+    let point1=new Point();
+    console.log(point1);
+</script>
+</html>
